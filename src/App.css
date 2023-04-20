@@ -1,4 +1,140 @@
 *{
   margin: 0;
   padding: 0;
+  --theme:rgb(177, 144, 218);
+  --theme-dark:rgb(86, 40, 142);
+  --theme-diff:rgb(25, 25, 101);
+}
+.App{
+  width: 100vw;
+  height: 100vh;
+}
+.top-nav{
+  width: 100%;
+  
+  box-shadow: 0 0 12px var(--theme-dark);
+  display: flex;
+  justify-content: center;
+}
+.top-nav img{
+  width: 50px;
+}
+.top-nav div{
+  display: flex;
+  min-width: 350px;
+  justify-content: space-between;
+}
+.top-nav h1{
+  color: var(--theme-diff);
+  text-shadow: 0 0 4px var(--theme);
+  font-family: cursive;
+  font-weight: 600;
+}
+.logo-cont{
+  padding: 20px 0;
+  height: 100%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+button{
+  font-size: 1.1em;
+  font-weight: 500;
+  background-color: var(--theme);
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+  color: var(--theme-dark);
+}
+.homePage{
+  background-image: url('../public/bg.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+}
+.homePage div{
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 8px black;
+  padding: 30px 60px;
+  height: 60vh;
+  margin-top: 20px;
+  margin-left: 300px;
+  height: max-content;
+  background-image: linear-gradient( var(--theme),var(--theme-dark));
+}
+.homePage h1{
+  color: var(--theme-diff);
+  margin-bottom: 20px;
+  font-size: 3rem;
+  
+}
+.homePage p{
+  color: var(--theme);
+  font-size: 1.6em;
+  font-weight: 200;
+  margin-bottom: 40px;
+  text-shadow: 0 0 1px black;
+}
+.homePage button{
+  margin-bottom: 30px;
+  font-weight: 700;
+
+}
+.transac{
+  display: flex;
+  height: 100%;
+}
+.nav{
+  width: 24%;
+  height: 100%;
+  padding: 40px 10px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-shadow: 0 0 2px black;
+}
+.nav h1{
+  margin-bottom: 40px;
+  color: var(--theme-diff);
+}
+.t-list{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.t-list h1{
+  margin-bottom: 20px;
+}
+.t-list select{
+  font-size: 1.2em;
+  padding: 4px 8px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.t-list input{
+  font-size: 1.2em;
+  padding: 4px 8px;
+  border-radius: 10px;
+  width: 60px;
+}
+.transac-cont-head{
+  margin-top: 20px;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  background-color: var(--theme-dark);
+}
+.transac-cont {
+  margin-top: 20px;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  background-color: var(--theme);
 }
