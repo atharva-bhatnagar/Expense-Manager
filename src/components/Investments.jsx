@@ -4,36 +4,34 @@ import { useNavigate } from "react-router-dom";
 import SideMenu from "./SideMenu";
 import axios from "axios";
 
-const Transactions = ({ setUser, user, setLogin }) => {
+const Investments = ({ setUser, user, setLogin }) => {
   const nav = useNavigate();
 
-  const addtransaction = async () => {
+  const addinvestment = async () => {
     const amount = document.getElementById("amount").value;
     const title = document.getElementById("title").value;
     const date = document.getElementById("date").value;
-    const category = document.getElementById("category").value;
-    const second = document.getElementById("second").value;
+    const rate = document.getElementById("rate").value;
 
-    let trs = user.transactions;
-    trs.unshift({
+    let inv = user.investments;
+    inv.unshift({
       id: user.name,
+      name: title,
       date: date,
-      topic: title,
       amount: amount,
-      category: category,
-      secondPerson: second,
+      rate: rate,
     });
 
     try {
       await axios
         .patch("http://localhost:4000/user", {
           id: user._id,
-          transactions: trs,
-          investments: user.investments,
+          transactions: user.transactions,
+          investments: inv,
         })
         .then((res) => {
           console.log(res.data);
-          alert("transaction added!!!");
+          alert("investment added!!!");
         });
     } catch (err) {
       console.log(err);
@@ -43,18 +41,14 @@ const Transactions = ({ setUser, user, setLogin }) => {
       .then((res) => {
         setUser(res.data);
       });
-    console.log(user);
-    let d = new Date(user.transactions.date);
-    console.log(d.getMonth());
   };
-
   return (
     <>
       <TopNavOut setLogin={setLogin} nav={nav} />
       <div className="transac">
         <SideMenu nav={nav} />
         <div className="t-list">
-          <h1>Transactions </h1>
+          <h1>Investments </h1>
           <div
             className="text-card sec"
             style={{ width: "30vw", marginBottom: "40px" }}
@@ -69,31 +63,30 @@ const Transactions = ({ setUser, user, setLogin }) => {
               Date : <input type="date" id="date" />
             </div>
             <div className="inpCalc">
-              Category:
-              <select id="category">
-                <option value="Essentials">Essentials</option>
-                <option value="Gifts">Gifts</option>
-                <option value="Entertainment">Entertainment</option>
-              </select>
+              Rate: <input type="number" id="rate" />
             </div>
-            <div className="inpCalc">
-              To: <input type="text" id="second" />
-            </div>
-            <button onClick={addtransaction}>Add Transaction</button>
+            <button onClick={addinvestment}>Add Investment</button>
           </div>
+          {/* <form>
+            <select>
+              <option value="jan">January</option>
+              <option value="jan">January</option>
+              <option value="jan">January</option>
+              <option value="jan">January</option>
+            </select>
+            <input type="number" placeholder="year" />
+          </form> */}
           <div className="transac-cont-head">
             <h2>Title</h2>
             <h2>Amount</h2>
-            <h2>Category</h2>
-            <h2>To</h2>
+            <h2>Rate(%)</h2>
           </div>
-          {user.transactions.map((t) => {
+          {user.investments.map((i) => {
             return (
               <div className="transac-cont">
-                <p>{t.topic}</p>
-                <p>Rs.{t.amount}</p>
-                <p>{t.category}</p>
-                <p>{t.secondPerson}</p>
+                <p>{i.name}</p>
+                <p>Rs.{i.amount}</p>
+                <p>{i.rate}</p>
               </div>
             );
           })}
@@ -103,4 +96,4 @@ const Transactions = ({ setUser, user, setLogin }) => {
   );
 };
 
-export default Transactions;
+export default Investments;
