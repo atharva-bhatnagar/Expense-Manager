@@ -13,7 +13,9 @@ const Login = ({ setLogin, setUser }) => {
 
     let userRes = null;
     await axios
-      .get("http://localhost:4000/user", { params: { email: email.value } })
+      .get("https://expense-backend-production-1893.up.railway.app/user", {
+        params: { email: email.value },
+      })
       .then((res) => {
         console.log(res.data);
         userRes = res.data;

@@ -24,7 +24,7 @@ const Investments = ({ setUser, user, setLogin }) => {
 
     try {
       await axios
-        .patch("http://localhost:4000/user", {
+        .patch("https://expense-backend-production-1893.up.railway.app/user", {
           id: user._id,
           transactions: user.transactions,
           investments: inv,
@@ -37,7 +37,9 @@ const Investments = ({ setUser, user, setLogin }) => {
       console.log(err);
     }
     await axios
-      .get("http://localhost:4000/user", { params: { email: user.email } })
+      .get("https://expense-backend-production-1893.up.railway.app/user", {
+        params: { email: user.email },
+      })
       .then((res) => {
         setUser(res.data);
       });

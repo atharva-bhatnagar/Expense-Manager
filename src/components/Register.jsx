@@ -13,7 +13,7 @@ const Register = () => {
 
     try {
       await axios
-        .post("http://localhost:4000/user", {
+        .post("https://expense-backend-production-1893.up.railway.app/user", {
           name: name.value,
           email: email.value,
           phone: phone.value,
